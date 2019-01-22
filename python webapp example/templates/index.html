@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Example WebApp</title>
+    <link rel="stylesheet" href="../static/main.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>A nice webapp</h1>
+      <form action="{{url_for('submited_new_page')}}" method="post">
+        <p>Name: <input title="Enter your name" type="text" name="name" value="" required></p>
+        <p>Gender
+          <select name="gender">
+            {% for g in gender_opt %}
+            <option value="{{g}}">{{g}}</option>
+            {% endfor %}
+          </select>
+        </p>
+        <p>Age: <input title="Enter your age" type="number" name="age" step="1" value="" required></p>
+        <p>e-mail: <input title="Enter your e-mail" type="email" name="email" value="" required></p>
+        <br>
+        <button type="submit" name="submit_btn">Submit</button>
+      </form>
+      <form action="{{url_for('submited_new_page')}}" method="get">
+        <button type="submit">See Data</button>
+      </form>
+    </div>
+    <div class="all-data">
+      <table style="width:50%">
+        {% if name %}
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Email</th>
+        </tr>
+        <tr>
+          <td>{{name|safe}}</td>
+          <td>{{gender|safe}}</td>
+          <td>{{age|safe}}</td>
+          <td>{{email|safe}}</td>
+        </tr>
+        {% endif %}
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Example WebApp</title>
+    <link rel="stylesheet" href="../static/main.css">
+  </head>
+
+  <body>
+    <form action="{{url_for('index')}}" method="post">
+      <button type="submit" name="go_back_btn">Go back</button>
+    </form>
+    <div class="all-data">
+      <table style="width:50%">
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Email</th>
+        </tr>
+        {% for n in name %}
+        <tr>
+          <td>{{n|safe}}</td>
+          <td>{{gender[name.index(n)]|safe}}</td>
+          <td>{{age[name.index(n)]|safe}}</td>
+          <td>{{email[name.index(n)]|safe}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
